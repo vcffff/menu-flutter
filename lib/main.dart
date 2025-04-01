@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'homepage.dart';
 void main() {
   runApp(MyApp());
 }
@@ -36,16 +36,16 @@ class _LyonAnimationPageState extends State<LyonAnimationPage> with TickerProvid
       vsync: this,
     );
 
-    _letterAnimations = List.generate(4, (index) {
-      double start = (index * 0.2).clamp(0.0, 1.0);
-      double end = (start + 0.2).clamp(start, 1.0);
-      return Tween<double>(begin: 0.0, end: 1.0).animate(
+     _letterAnimations=List.generate(4, (index){
+      double start=(index*0.2).clamp(0.0,1.0);
+      double end=(start+0.2).clamp(start,1.0);
+      return Tween <double>(begin: 0.0,end:1.0).animate(
         CurvedAnimation(
-          parent: _controller,
-          curve: Interval(start, end, curve: Curves.easeOut),
-        ),
+          parent:_controller,
+          curve:Interval(start, end,curve: Curves.easeOut)
+        )
       );
-    });
+     });
 
   
     _lineAnimations = List.generate(5, (index) {
@@ -94,6 +94,7 @@ class _LyonAnimationPageState extends State<LyonAnimationPage> with TickerProvid
                     buildAnimatedLine(30, 120, _lineAnimations[2]),
                     buildAnimatedLine(170, -60, _lineAnimations[3]),
                     buildAnimatedLine(250, 160, _lineAnimations[4]),
+                    FloatingActionButton(onPressed: (){Navigator.push(context,MaterialPageRoute(builder: (context)=>HistoryScreen()));},child: Icon(Icons.arrow_forward),backgroundColor: Colors.pink,),
                   ],
                 ),
               ),
